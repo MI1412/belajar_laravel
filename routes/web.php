@@ -15,9 +15,9 @@ Route::get('/add', function (){
 })->middleware(['auth', 'verified'])->name('add');
 
 // rute url ke dashboard tetapi arahkan lagi ke verified jika sudah login atau register
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 // rute profile controller
 Route::middleware('auth')->group(function () {
@@ -33,7 +33,7 @@ Route::get('/', [ImageController::class, 'index'])->middleware(['auth', 'verifie
 Route::get('/update/{id}/edit', [ImageController::class, 'edit'])->middleware(['auth', 'verified'])->name('images.edit');
 Route::put('/update/{id}', [ImageController::class, 'update'])->middleware(['auth', 'verified'])->name('images.update');
 // mengarahkan ke halaman images dengan function edit
-Route::delete('/images/{image}', [ImageController::class, 'destroy'])->middleware(['auth', 'verified'])->name('images.destroy');// mengarahkan ke halaman images dengan function destroy
+Route::delete('/images/{image}', [ImageController::class, 'destroy'])->middleware(['auth', 'verified'])->name('images.destroy');// mengarahkan ke /halaman images dengan function destroy
 
 
 
